@@ -73,11 +73,19 @@ Route::post('cate/changeorder','CateController@changeOrder');
 Route::resource('cate', 'CateController');
 
 //文章模块
+//    文章添加到推荐位路由
+Route::get('article/recommend','ArticleController@recommend');
 //将markdown语法的内容转化为HTML语法内容
 Route::post('article/pre_mk','ArticleController@pre_mk');
 //上传路由
 Route::post('article/upload','ArticleController@upload');
 Route::resource('article','ArticleController');
+
+//网站配置模块
+Route::post('config/changecontent','ConfigController@changeContent');
+Route::get('config/putcontent','ConfigController@putContent');
+Route::resource('config','ConfigController');
+
 });
 
 

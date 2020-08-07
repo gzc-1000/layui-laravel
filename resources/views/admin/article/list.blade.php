@@ -3,7 +3,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.0</title>
+    <title>欢迎页面</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -25,9 +25,9 @@
     <div class="x-body">
 
       <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','{{ url('admin/user/create') }}',600,400)"><i class="layui-icon"></i>添加</button>
-
+        <!-- <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button> -->
+        <button class="layui-btn" onclick="x_admin_show('添加文章','{{ url('admin/article/create') }}',600,400)"><i class="layui-icon"></i>添加</button>
+        <span class="x-right" style="line-height:40px">共有数据：{{ sizeof($arts) }} 条</span>
       </xblock>
       <table class="layui-table">
         <thead>
@@ -46,12 +46,13 @@
         <tbody>
         @foreach($arts as $v)
           <tr>
-            {{--<td>--}}
+            <!-- {{--<td>--}}
               {{--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{{ $v->user_id }}'><i class="layui-icon">&#xe605;</i></div>--}}
               {{--<div class="layui-input-inline" style="width: 40px;">--}}
                 {{--<input type="text"  onchange="changeOrder(this,{{ $v->cate_id }})" value="{{ $v->cate_order }}"  autocomplete="off" class="layui-input">--}}
               {{--</div>--}}
-            {{--</td>--}}
+            {{--</td>--}} -->
+            
             <td>{{ $v['art_id'] }}</td>
             <td>{{ $v['art_title'] }}</td>
             <td>{{ $v['art_tag'] }}</td>
@@ -147,7 +148,7 @@
                               $(obj).find('i').html('&#xe62f;');
                               $(obj).attr('data-id','1');
 
-                              $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已推荐');
+                              $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已添加到推荐位');
                               layer.msg('已推荐!', {icon: 6, time: 1000});
                           } else {
                               layer.msg('修改失败!', {icon: 5, time: 1000});
