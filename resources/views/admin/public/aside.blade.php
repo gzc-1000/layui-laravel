@@ -25,6 +25,111 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
+                    <cite>个人信息管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{ url('admin/teacher') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>教师信息</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{ url('admin/student') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>学生信息</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>课程管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{ url('admin/course') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>课程信息</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{ url('admin/course/add') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加课程</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>成绩管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{ url('admin/score') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>成绩列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{ url('admin/excel/export') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>成绩导出</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>我的设置</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{ url('admin/user_mes') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>基本资料</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{ url('admin/usertopwd') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>修改密码</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>网站配置管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{ url('admin/config/create') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加网站配置</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{ url('admin/config') }}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>网站配置列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <!-- <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
                     <cite>角色管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -216,7 +321,7 @@
                         {{--</a>--}}
                     {{--</li>--}}
                 {{--</ul>--}}
-            {{--</li>--}}
+            {{--</li>--}} -->
         </ul>
     </div>
 </div>

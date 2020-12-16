@@ -51,4 +51,10 @@ class Cate extends Model
         return $arr;
     }
    
+
+      //定义跟文章表的关联属性
+      public function article()
+      {
+          return $this->hasMany('App\Model\Article','cate_id','cate_id');
+      }
 }

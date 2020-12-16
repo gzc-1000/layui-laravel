@@ -12,12 +12,15 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+    'driver' => 'eloquent',
 
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
     ],
 
+    'model' => 'App\User',
+    'table' => 'blog_user',
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

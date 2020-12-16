@@ -42,6 +42,17 @@
                 autocomplete="off" class="layui-input">
             </div>
         </div>
+        <div class="layui-form-item">
+    <label class="layui-form-label">角色</label>
+    <div class="layui-input-inline">
+      <select name="role"  lay-verify="required" style="width:190px;">
+        <option value="admin">管理员</option>
+        <option value="student">学生</option>
+        <option value="teacher">教师</option>
+      </select>
+    </div>
+  </div>
+        
           <div class="layui-form-item">
               <label for="L_pass" class="layui-form-label">
                   <span class="x-red">*</span>密码

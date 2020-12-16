@@ -23,4 +23,12 @@ class User extends Model
      {
          return $this->belongsToMany('App\Model\Role','user_role','user_id','role_id');
      }
+
+     public function teacher()
+     {
+         //关联的模型类名, 关系字段
+         return $this->hasOne('App\Model\Teacher','user_id','role_id');
+     }
+
+
 }

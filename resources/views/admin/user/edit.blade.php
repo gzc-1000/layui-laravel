@@ -34,6 +34,36 @@
                   <span class="x-red">*</span>将会成为您唯一的登入名
               </div>
           </div>
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>密码
+              </label>
+              <div class="layui-input-inline">
+                  <!-- <input type="hidden" name="uid" value="{{ $user->user_id }}"> -->
+                  <input type="text" id="L_email" value="{{ $password }}" name="password" required="" 
+                  autocomplete="off"  class="layui-input">
+              </div>
+          </div>
+          <!-- <div class="layui-form-item">
+    <label class="layui-form-label">角色</label>
+    <div class="layui-input-inline">
+      <select name="role"  lay-verify="required" style="width:190px;">
+        <option value="admin">管理员</option>
+        <option value="student">学生</option>
+        <option value="teacher">教师</option>
+      </select>
+    </div>
+  </div> -->
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>邮箱
+              </label>
+              <div class="layui-input-inline">
+                  <!-- <input type="hidden" name="uid" value="{{ $user->user_id }}"> -->
+                  <input type="text" id="L_email" value="{{ $user->email }}" name="email" required="" 
+                  autocomplete="off" lay-verify="email" class="layui-input">
+              </div>
+          </div>
 
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">

@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use DB;
+use Auth;
 use App\Http\Controllers\Controller;
 
 // 引用验证码文件后，终端运行composer dump-autoload进行加载
@@ -111,7 +112,20 @@ class LoginController extends Controller
        session()->put('user',$user);
 
        // 5.跳转到后台首页 
-       return redirect('admin/index');
+       $role = $user->role;
+    //    var_dump($role);
+    if($role == 'admin'){
+        return redirect('admin/index');
+     }
+    elseif($role == 'teacher') {
+        return redirect('teacher/index');
+    }elseif($role == 'student'){
+        return redirect('student/index');
+        }
+        else{
+            return redirect('admin/login') -> with('errors','用户角色不存在');
+        };
+       
     }
 
      //加密算法-----
@@ -133,6 +147,17 @@ class LoginController extends Controller
     public function index()
     {
         return view('admin.index');
+    }
+
+    // 教师
+    public function tindex()
+    {
+        return view('teacher.index');
+    }
+    // 学生
+    public function sindex()
+    {
+        return view('student.index');
     }
 
     //欢迎界面

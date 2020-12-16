@@ -16,10 +16,10 @@
 <body class="login-bg">
     
     <div class="login layui-anim layui-anim-up">
-        <div class="message">后台管理登录</div>
+        <div class="" style="color:#666;text-align:center;font-size:20px;">后台管理登录</div>
 
         @if (!empty($errors))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" style="color:#666;text-align:center;font-size:18px">
                 <ul>
                     @if(is_object($errors))
                         @foreach ($errors->all() as $error)

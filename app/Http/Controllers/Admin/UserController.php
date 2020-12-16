@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\Role;
 use App\Model\User;
+use App\Model\Teacher;
+use App\Model\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
@@ -96,7 +98,7 @@ class UserController extends Controller
                             $query->where('email','like','%'.$email.'%');
                         }
                     })
-                    ->paginate($request->input('num')?$request->input('num'):3);
+                    ->paginate($request->input('num')?$request->input('num'):5);
         
         
         //       后台分页： $user = User::paginate(3);
@@ -133,7 +135,7 @@ class UserController extends Controller
         $username = $input['username']; //username:add模板中input的name
         $pass = Crypt::encrypt($input['pass']);
 
-       $res = User::create(['user_name'=>$username, 'user_pass'=>$pass, 'email'=>$input['email']]);
+       $res = User::create(['user_name'=>$username, 'user_pass'=>$pass, 'email'=>$input['email'], 'role'=>$input['role']]);
 
         //4.根据添加是否成功，给客户端返回一个json格式的反馈
         if($res){
@@ -171,8 +173,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $password = Crypt::decrypt($user->user_pass);
 
-        return view('admin.user.edit',compact('user'));
+        return view('admin.user.edit',compact('user','password'));
     }
 
     /**
@@ -188,8 +191,15 @@ class UserController extends Controller
         $user = User::find($id);
         //2.获取要修改的用户名
         $username = $request->input('user_name');
+        $email = $request->input('email');
+        // $password = $request->input('password');
+        $password = Crypt::encrypt($request->input('password'));
+        // $role = $request->input('role');
 
         $user->user_name = $username;
+        $user->user_pass = $password;
+        // $user->role = $role;
+        $user->email = $email;
         $res = $user->save();
 
         if($res){
@@ -250,5 +260,60 @@ class UserController extends Controller
     }
     return $data;
     }
+  
 
+   
+
+   public function tousermes(Request $request){
+    $admin = session()->get('user');
+    $user = User::where('user_id',$admin->user_id)->first();
+    return view('admin.me.user_mes',compact('user')); 
+   }
+
+   public function topwd(Request $request)
+  {
+    $admin = session()->get('user');
+    $user = User::where('user_id',$admin->user_id)->first();
+    return view('admin.me.user_pwd',compact('user'));     
+  }
+
+  public function userpwd(Request $request)
+  {
+    //1.根据id获取要修改的记录
+    $user = session()->get('user');
+    //2.获取要修改的用户名
+    // $pass = $request->input('pass');
+    $password1 = Crypt::decrypt($user->user_pass);
+   //2.获取要修改的用户名
+//    原密码
+   $first = $request->input('first');
+   $password = Crypt::encrypt($request->input('pass'));
+if($first == $password1){
+   $user->user_pass = $password;
+   $res = $user->save();
+   if($res){
+       $data = [
+           'status' => '0',
+           'message'=> '修改成功'
+       ];
+       session() -> flush();
+       return $data;
+   }else{
+       $data = [
+           'status' => '1',
+           'message'=> '修改失败'
+       ];
+       return $data;
+   }
+   
+}else{
+    $data2 = [
+        'status' => '2',
+        'message'=> '原密码错误'
+    ];
+    
+
+}
+return $data2;   
+  }
 }

@@ -50,7 +50,7 @@ return [
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             // 加上blog前缀后在里面使用时blog_user等价于user
-            'prefix' => 'blog_',
+            'prefix' => '',
             'strict' => false,
             'engine' => null,
         ],

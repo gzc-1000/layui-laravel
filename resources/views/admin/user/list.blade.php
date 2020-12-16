@@ -34,8 +34,8 @@
           <div class="layui-input-inline">
             <select name="num" lay-filter="aihao">
               {{--<option value=""></option>--}}
-              <option value="3" @if($request->input('num')==3) selected    @endif>3</option>
               <option value="5" @if($request->input('num')==5) selected    @endif>5</option>
+              <option value="8" @if($request->input('num')==8) selected    @endif>8</option>
             </select>
           </div>
           {{--<input class="layui-input" placeholder="开始日" name="start" id="start">--}}
@@ -59,6 +59,7 @@
             <th>ID</th>
             <th>用户名</th>
             <th>邮箱</th>
+            <th>角色</th>
             <th>状态</th>
             <th>操作</th></tr>
         </thead>
@@ -71,15 +72,22 @@
             <td>{{ $v->user_id }}</td>
             <td>{{ $v->user_name }}</td>
             <td>{{ $v->email }}</td>
+            @if($v->role == 'admin')
+            <td>管理员</td>
+            @elseif($v->role == 'teacher')
+            <td>教师</td>
+            @else
+            <td>学生</td>
+            @endif
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
             <td class="td-manage">
               <a onclick="member_stop(this,{{ $v->user_id }})" href="javascript:;" status="{{ $v->status }}"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a  href="{{ url('admin/user/auth/'.$v->user_id) }}"   title="授权">
+              <!-- <a  href="{{ url('admin/user/auth/'.$v->user_id) }}"   title="授权">
                 <i class="layui-icon">&#xe631;</i>
-              </a>
+              </a> -->
               <a title="编辑"  onclick="x_admin_show('编辑','{{ url('admin/user/'.$v->user_id.'/edit') }}',600,400)" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
